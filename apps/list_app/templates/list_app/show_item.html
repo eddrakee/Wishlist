@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>View Item</title>
+    {% load staticfiles %}
+	<link rel="stylesheet" href="{% static '/list_app/css/stylesheet.css' %}" media="screen" charset="utf-8">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+                <div class="upperRight">
+                     <a href= '{% url "list_ns:list_index" %}' id="link">Dashboard</a>
+                </div>
+        </div>
+
+                
+        <div class="contentBox">
+            <h1>{{this_item.name}}</h1>
+            <h4>Users who added this product/item in their wish list:</h4>
+            <hr>
+            {% for idx in wishers %}
+                <p>{{idx.first_name}}</p>
+            {% endfor %}
+                        
+            
+        </div>
+
+        <form action="{% url 'list_ns:logout' %}">
+            {% csrf_token %}
+            <input type="submit" name="" value="logout">
+        </form>
+      
+        
+   </div>
+    
+</body>
+
+</html>
